@@ -1,0 +1,90 @@
+/* Основные стили */
+body {
+    font-family: 'Figtree', sans-serif;
+    background-color: #F9FAFB; /* Цвет фона для светлой темы */
+    color: #111827; /* Цвет текста для светлой темы */
+}
+
+/* Стили для тёмной темы */
+body.dark {
+    background-color: #000000; /* Цвет фона для тёмной темы */
+    color: #FFFFFF; /* Цвет текста для тёмной темы */
+}
+
+/* Заголовок и навигация */
+header {
+    position: relative;
+    max-width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header svg {
+    height: 3rem; /* Высота SVG */
+    color: #FFFFFF; /* Цвет SVG для светлой темы */
+}
+
+body.dark header svg {
+    color: #FF2D20; /* Цвет SVG для тёмной темы */
+}
+
+.introContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    max-width: 80rem;
+}
+
+.introVideo, .familie {
+    flex: 1;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.introVideo video, .familie img {
+    width: 100%;
+    height: 300px; /* Фиксированная высота */
+    object-fit: cover; /* Обрезка изображения и видео, чтобы заполнить контейнер */
+    border-radius: 8px;
+}
+
+.introVideo h2, .familie h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.introVideo p, .familie p {
+    color: #555;
+    font-size: 0.875rem;
+}
+
+.familie a {
+    display: inline-block;
+    background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.familie a:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+    transform: scale(1.05);
+}
+
+/* Футер */
+footer {
+    padding: 4rem 0;
+    font-size: 0.875rem;
+    text-align: center;
+}

@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.node {
+    cursor: pointer;
+    text-align: center;
+}
+
+.node circle {
+    stroke-width: 4px;
+    /* Ширина границы */
+}
+
+.node text {
+    font: 12px sans-serif;
+    text-anchor: middle;
+}
+
+.link {
+    fill: none;
+    stroke: #aaa;
+    stroke-width: 3px;
+    /* Толщина линий */
+}
+
+.arrowHead {
+    fill: #aaa;
+}
+
+.avatar {
+    clip-path: circle(20px at center);
+    height: 40px;
+    width: 40px;
+}
+
+.paternal-grandfather circle {
+    stroke: green;
+    stroke-width: 4px;
+}
+
+.paternal-grandmother circle {
+    stroke: yellow;
+    stroke-width: 4px;
+}
+
+.maternal-grandfather circle {
+    stroke: green;
+    stroke-width: 4px;
+}
+
+.maternal-grandmother circle {
+    stroke: yellow;
+    stroke-width: 4px;
+}
+
+.modalecard {
+    right: 320px;
+    top: 170px;
+}
+
+.introContainer {
+    background: #5c97f1;
+    padding: 2rem;
+    border: 1px solid;
+    border-radius: 6px;
+}

@@ -15,6 +15,7 @@ class People extends Model
         'last_name',
         'avatar',
         'gender',
+        'is_alive',
         'birth_date',
         'death_date',
         'mother_id',
@@ -41,6 +42,14 @@ class People extends Model
         return $this->belongsTo(People::class, 'spouse_id');
     }
 
+    public function children()
+    {
+        return $this->hasMany(People::class, 'father_id')->orWhere('mother_id', $this->id);
+    }
+    public function beheerder()
+    {
+        return $this->belongsTo(User::class, 'beheerder_id');
+    }
     public function paternalGrandfather()
     {
         return $this->belongsTo(People::class, 'paternal_grandfather_id');
@@ -61,14 +70,8 @@ class People extends Model
         return $this->belongsTo(People::class, 'maternal_grandmother_id');
     }
 
-    public function children()
-    {
-        return $this->hasMany(People::class, 'father_id')->orWhere('mother_id', $this->id);
-    }
-    public function beheerder()
-    {
-        return $this->belongsTo(User::class, 'beheerder_id');
-    }
+   
+    
 
     public function countries()
     {

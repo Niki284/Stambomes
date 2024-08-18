@@ -4,6 +4,18 @@
 
 <div class="container mx-auto mt-5">
     <h1 class="text-3xl font-bold mb-6">Countries</h1>
+    
+
+
+    @if (session('error'))
+        <div class="bg-red-100 text-red-700 p-4 rounded mb-6">
+            {{ session('error') }}
+        </div>
+    @endif
+
+
+    <!-- Add back admin -->
+     <a href="/admin" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-6 inline-block">Go to Admin</a>
 
     @if (session('success'))
         <div class="bg-green-100 text-green-700 p-4 rounded mb-6">

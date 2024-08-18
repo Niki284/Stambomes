@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HistoryController;
@@ -22,6 +23,7 @@ Route::middleware('auth')->group(function () {
 
     // Search routes
     Route::get('/searches', [PeopleController::class, 'search'])->name('peoples.search');
+
     // People routes
     Route::get('/peoples', [PeopleController::class, 'index'])->name('peoples.index');
     Route::get('/peoples/create', [PeopleController::class, 'create'])->name('peoples.create');
@@ -31,7 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/peoples/{id}/edit', [PeopleController::class, 'edit'])->name('peoples.edit');
     Route::put('/peoples/{id}', [PeopleController::class, 'update'])->name('peoples.update');
     Route::delete('/peoples/{id}', [PeopleController::class, 'destroy'])->name('peoples.destroy');
-    // Route::delete('/peoples/{id}', [PeopleController::class, 'destroy'])->name('peoples.destroy');
 
     // History routes
     Route::get('peoples/{id}/history/create', [HistoryController::class, 'create'])->name('histories.create');
@@ -41,15 +42,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('peoples/{id}/history', [HistoryController::class, 'destroy'])->name('histories.destroy');
 
     // Gallery routes
-
     Route::get('peoples/{id}/gallery/create', [GalleryController::class, 'create'])->name('galleries.create');
     Route::post('peoples/{id}/gallery', [GalleryController::class, 'store'])->name('galleries.store');
-    //Route::delete('peoples/{id}/gallery/{galleryId}', [GalleryController::class, 'destroy'])->name('galleries.destroy');
     Route::delete('peoples/{personId}/gallery/{galleryId}', [GalleryController::class, 'destroy'])->name('galleries.destroy');
 
-
-
+    // Country routes
     Route::resource('countries', CountryController::class);
+
+    // Admin routes
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->name('admin.index');
+    Route::get('/admin/countries', [AdminController::class, 'manageCountries'])->name('admin.countries');
+    Route::get('/admin/users', [AdminController::class, 'manageUsers'])->name('admin.users');
+    Route::delete('/admin/users/{id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
 });
 
 require __DIR__ . '/auth.php';

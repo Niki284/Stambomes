@@ -22,8 +22,14 @@
         <div class="mb-4">
             <label for="avatar" class="block text-gray-700 font-bold mb-2">Avatar or Photo</label>
             <input type="file" name="avatar" id="avatar" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            @if($people->avatar)
-                <img src="{{ asset('storage/' . $people->avatar) }}" alt="Avatar" class="mt-2 h-20 w-20 rounded-full">
+            @if(isset($person->avatar) && $person->avatar != 'avatars/user.jpg')
+            <div class="mt-2">
+                <img src="{{ asset('storage/' . $person->avatar) }}" alt="Avatar" class="w-32 h-32 object-cover">
+            </div>
+            @else
+            <div class="mt-2">
+                <img src="{{ asset('storage/avatars/user.jpg') }}" alt="Default Avatar" class="w-32 h-32 object-cover">
+            </div>
             @endif
         </div>
 

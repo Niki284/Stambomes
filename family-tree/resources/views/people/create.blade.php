@@ -21,6 +21,15 @@
         <div class="mb-4">
             <label for="avatar" class="block text-gray-700 font-bold mb-2">Avatar or Photo</label>
             <input type="file" name="avatar" id="avatar" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            @if(isset($person->avatar) && $person->avatar != 'avatars/user.jpg')
+            <div class="mt-2">
+                <img src="{{ asset('storage/' . $person->avatar) }}" alt="Avatar" class="w-32 h-32 object-cover">
+            </div>
+            @else
+            <div class="mt-2">
+                <img src="{{ asset('storage/avatars/user.jpg') }}" alt="Default Avatar" class="w-32 h-32 object-cover">
+            </div>
+            @endif
         </div>
 
         <div class="mb-4">
@@ -42,11 +51,17 @@
         </div>
 
         <div class="mb-4">
+            <label for="is_alive" class="block text-gray-700 font-bold mb-2">Is Alive</label>
+            <input type="checkbox" name="is_alive" id="is_alive" value="1" {{ old('is_alive', true) ? 'checked' : '' }} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+
+
+        <div class="mb-4">
             <label for="mother_id" class="block text-gray-700 font-bold mb-2">Mother</label>
             <select name="mother_id" id="mother_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="">None</option>
                 @foreach($people as $person)
-                    <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
+                <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
                 @endforeach
             </select>
         </div>
@@ -56,7 +71,7 @@
             <select name="father_id" id="father_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="">None</option>
                 @foreach($people as $person)
-                    <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
+                <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
                 @endforeach
             </select>
         </div>
@@ -66,17 +81,17 @@
             <select name="spouse_id" id="spouse_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="">None</option>
                 @foreach($people as $person)
-                    <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
+                <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
                 @endforeach
             </select>
         </div>
-
+<!-- 
         <div class="mb-4">
             <label for="paternal_grandfather_id" class="block text-gray-700 font-bold mb-2">Paternal Grandfather</label>
             <select name="paternal_grandfather_id" id="paternal_grandfather_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="">None</option>
                 @foreach($people as $person)
-                    <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
+                <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
                 @endforeach
             </select>
         </div>
@@ -86,7 +101,7 @@
             <select name="paternal_grandmother_id" id="paternal_grandmother_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="">None</option>
                 @foreach($people as $person)
-                    <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
+                <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
                 @endforeach
             </select>
         </div>
@@ -96,7 +111,7 @@
             <select name="maternal_grandfather_id" id="maternal_grandfather_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="">None</option>
                 @foreach($people as $person)
-                    <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
+                <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
                 @endforeach
             </select>
         </div>
@@ -106,7 +121,7 @@
             <select name="maternal_grandmother_id" id="maternal_grandmother_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="">None</option>
                 @foreach($people as $person)
-                    <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
+                <option value="{{ $person->id }}">{{ $person->first_name }} {{ $person->last_name }}</option>
                 @endforeach
             </select>
         </div>
@@ -116,10 +131,10 @@
             <select name="country_id" id="country_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="">None</option>
                 @foreach($countries as $country)
-                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                <option value="{{ $country->id }}">{{ $country->name }}</option>
                 @endforeach
             </select>
-        </div>
+        </div> -->
 
         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Save</button>
     </form>

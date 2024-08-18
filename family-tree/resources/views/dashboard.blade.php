@@ -21,6 +21,10 @@
                         </div>
                         <div class="mt-8 flex justify-center sm:justify-start">
                             <a class="bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition duration-300" href="{{ route('peoples.index') }}">Create Your Tree</a>
+
+                            @if(Auth::user()->is_admin)
+                                <a class="bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition duration-300 ml-4" href="/admin">Admin Panel</a>
+                            @endif
                         </div>
                     </div>
 
@@ -101,5 +105,4 @@
                 });
         });
     </script>
-
 </x-app-layout>

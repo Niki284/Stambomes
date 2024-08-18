@@ -9,6 +9,10 @@
             <a href="{{ route('peoples.index') }}" class="bg-orange-600 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-700 transition-transform transform hover:scale-105 mx-2">Tree</a>
             <a href="{{ route('peoples.create') }}" class="bg-cyan-600 text-white px-4 py-2 rounded-lg shadow hover:bg-cyan-700 transition-transform transform hover:scale-105 mx-2">Add User</a>
             <a href="{{ route('peoples.search') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 transition-transform transform hover:scale-105 mx-2">Search Peoples</a>
+
+            @if(Auth::user()->is_admin)
+            <a href="/admin" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg shadow hover:from-green-600 hover:to-green-700 transition-transform transform hover:scale-105">Admin Panel</a>
+            @endif
         </div>
     </div>
 
@@ -18,7 +22,9 @@
             <h2 class="text-3xl font-semibold text-gray-800 mb-4">{{ $person->first_name }} {{ $person->last_name }}</h2>
 
             @if($person->avatar)
-            <img src="{{ asset('storage/' . $person->avatar) }}" alt="Avatar" class="w-32 h-32 rounded-full mb-4 transition-transform transform hover:scale-110">
+                <img src="{{ asset('storage/' . $person->avatar ) }}" alt="Avatar" class="w-32 h-32 rounded-full mb-4 transition-transform transform hover:scale-110">
+            @else
+                <img src="{{ asset('storage/avatars/user.jpg') }}" alt="Default Avatar" class="w-32 h-32 rounded-full mb-4 transition-transform transform hover:scale-110">
             @endif
 
             <!-- Gender Section -->
@@ -165,11 +171,11 @@
                 </li>
                 <li class="flex items-center mt-2">
                     <i class="fas fa-heart text-red-600 mr-2 transition-transform transform hover:scale-125"></i>
-                    Start Spouse: {{ $person->history->start_spouse }}
+                    Start married: {{ $person->history->start_spouse }}
                 </li>
                 <li class="flex items-center mt-2">
                     <i class="fas fa-heart-broken text-gray-600 mr-2 transition-transform transform hover:scale-125"></i>
-                    End Spouse: {{ $person->history->end_spouse }}
+                    End married: {{ $person->history->end_spouse }}
                 </li>
             </ul>
             @else
